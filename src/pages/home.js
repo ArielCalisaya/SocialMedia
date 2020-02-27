@@ -5,7 +5,7 @@ import Comments from "../components/Comments";
 
 class home extends Component {
     state = {
-        comments = null
+        comments: null
     };
     componentDidMount() {
         axios.get('/comments')
