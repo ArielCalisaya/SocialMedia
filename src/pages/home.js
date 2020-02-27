@@ -8,7 +8,7 @@ class home extends Component {
         comments: null
     };
     componentDidMount() {
-        axios.get('/comments')
+        axios.get('https://us-central1-social-media-d9c51.cloudfunctions.net/api/comments')
         .then( res => {
             console.log(res.data);
             this.setState({
