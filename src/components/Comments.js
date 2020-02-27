@@ -31,32 +31,32 @@ class Comments extends Component {
                 createdAt,
                 userImage,
                 userHandle
-            } = this.props
-        }
-
+            } 
+        } = this.props;
+        
         return (
-            <Card className= {classes.card}>
-                <CardMedia
-                    className={classes.image}
-                    image={userImage}
-                    title="profile User"
-                />
-                <CardContent className={classes.content}>
-                    <Typography
-                        variant="h5"
-                        component={Link}
-                        to={`/users/${userHandle}`}
-                        color="primary"
-                    >
-                        {userHandle}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                        {createdAt}
-                    </Typography>
-                    <Typography variant="body1">{body}</Typography>
-                </CardContent>
-            </Card>
-        )
+                <Card className= {classes.card}>
+                    <CardMedia
+                        className={classes.image}
+                        image={userImage}
+                        title="profile User"
+                    />
+                    <CardContent className={classes.content}>
+                        <Typography
+                            variant="h5"
+                            component={Link}
+                            to={`/users/${userHandle}`}
+                            color="primary"
+                        >
+                            {userHandle}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary">
+                            {createdAt}
+                        </Typography>
+                        <Typography variant="body1">{body}</Typography>
+                    </CardContent>
+                </Card>
+        );
     }
 }
 
