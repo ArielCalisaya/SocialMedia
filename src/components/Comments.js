@@ -11,7 +11,7 @@ const Link = require("react-router-dom").Link;
 const styles = {
     card: {
         display: "flex",
-        marginButtom: 20
+        marginBottom: 20
     },
     image: {
         minWidth: 200
