@@ -38,6 +38,10 @@ const styles = {
   },
   progress: {
       position: 'absolute'
+  },
+  signupHere: {
+      display: "block",
+      marginTop: 12
   }
 };
 
@@ -123,8 +127,8 @@ class login extends Component {
                 )}
               </Button>
               <br/>
-              <small>dont have an acount? Sign Up 
-                  <Link to="/signup"> here</Link> 
+              <small className={classes.signupHere} >dont have an acount? Sign Up 
+                  <Link to="/signup"> here </Link> 
               </small>
           </form>
         </Grid>
