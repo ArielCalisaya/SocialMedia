@@ -25,24 +25,27 @@ https://github.com/ArielCalisaya/Firebase_Functions
 ```json
 {
     "Api_routes": {
-        "Main_Url_Reference": "https://us-central1-social-media-d9c51.cloudfunctions.net/api",
-        "comments_Route": {
-        "GET_All_Comments": "/comments",
-        "GET_commnetBy_ID": "/comment/:commentId",
-        "POST_Comment": "/newComment",
-        "DELETE_commentBy_ID": "/comment/:commentId",
-        "POST_Comment_in_userComment": "/comment:commentId/userInComment",
-        "GET_Like": "/comment/:commentId/like",
-        "GET_unLike": "/comment/:commentId/unLike"
-        },
-        "user_route": {
-        "POST_singup": "/signup",
-        "POST_signin": "/signin",
-        "POST_userDetails": "/user",
-        "POST_userImage": "/user/image",
-        "GET_UserInfo": "/user",
-        "GET_UserDetails": "/user/:handle"
-        }
+        "Main_Url_Reference": ["https://us-central1-social-media-d9c51.cloudfunctions.net/api", [
+            {
+            "comments_Route": {
+                "GET_All_Comments": "/comments",
+                "GET_commnetBy_ID": "/comment/:commentId",
+                "POST_Comment": "/newComment",
+                "DELETE_commentBy_ID": "/comment/:commentId",
+                "POST_Comment_in_userComment": "/comment:commentId/userInComment",
+                "GET_Like": "/comment/:commentId/like",
+                "GET_unLike": "/comment/:commentId/unLike"
+            },
+            "user_route": {
+                "POST_singup": "/signup",
+                "POST_signin": "/signin",
+                "POST_userDetails": "/user",
+                "POST_userImage": "/user/image",
+                "GET_UserInfo": "/user",
+                "GET_UserDetails": "/user/:handle"
+            }
+            }
+        ]]
     }
 }
 ```
