@@ -44,8 +44,8 @@ https://github.com/ArielCalisaya/Firebase_Functions
                 "GET_UserInfo": "/user",
                 "GET_UserDetails": "/user/:handle"
             }
-            }
-        ]]
+            }]
+        ]
     }
 }
 ```
