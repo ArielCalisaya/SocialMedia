@@ -13,37 +13,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Link = require('react-router-dom').Link
 
-const styles = {
-  form: {
-    textAlign: "center"
-  },
-  img: {
-      margin: "20px auto 20px auto",
-      width: "100px"
-  },
-  pageTitle: {
-      margin: "10px auto 10px auto"
-  },
-  textField: {
-      margin: "10px auto 10px auto"
-  },
-  button: {
-      marginTop : 20,
-      position: 'relative'
-  },
-  customError: {
-      color: 'red',
-      fontSize: '0.8rem',
-      marginTop: 10
-  },
-  progress: {
-      position: 'absolute'
-  },
-  signupHere: {
-      display: "block",
-      marginTop: 12
-  }
-};
+const styles = (theme) => ({
+    ...theme.styled
+});
 
 class login extends Component {
     constructor(){
@@ -66,6 +38,7 @@ class login extends Component {
         }
         axios.post('/signin', userData)
             .then(res => {
+                localStorage.setItem('TokenId', `Bearer ${res.data.token}`);
                 console.log(res.data);
                 this.setState({
                     loading: false
