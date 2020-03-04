@@ -119,7 +119,7 @@ class signup extends Component {
                 )}
               </Button>
               <br/>
-              <small className={classes.signupHere} >Already have an acount? Sign in
+              <small className={classes.signupHere} >Already have an account? Sign in
                   <Link to="/login"> here </Link> 
               </small>
           </form>
