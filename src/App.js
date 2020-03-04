@@ -4,6 +4,7 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import customTheme from './util/theme';
 import jwtDecode from 'jwt-decode';
+import AuthRoute from './util/AuthRoute';
 import './App.css';
 
 // components
@@ -18,15 +19,15 @@ import signup from './pages/signup';
 
 const theme = createMuiTheme(customTheme)
 
-let authentincated;
+let authenticated;
 const token = localStorage.FBTokenAuth;
 if (token){
   const decodedToken = jwtDecode(token);
   if(decodedToken.exp * 1000 < Date.now()){
     window.location.href = '/login'
-    authentincated = false; 
+    authenticated = false; 
   } else {
-    authentincated = true;
+    authenticated = true;
   }
 }
 
@@ -40,8 +41,8 @@ class App extends Component {
             <div className="container">
             <Switch>
                 <Route exact path="/" component={home} />
-                <Route exact path="/login" component={login} />
-                <Route exact path="/signup" component={signup} />
+                <AuthRoute exact path="/login" component={login} authenticated={authenticated}/>
+                <AuthRoute exact path="/signup" component={signup} authenticated={authenticated}/>
             </Switch>
             </div>
         </Router>

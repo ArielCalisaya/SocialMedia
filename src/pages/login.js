@@ -3,6 +3,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import Icon from '../img/social.png';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // MUI
 import Grid from "@material-ui/core/Grid";
@@ -11,7 +12,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const Link = require('react-router-dom').Link
 
 const styles = (theme) => ({
     ...theme.styled

@@ -15,9 +15,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
   },
-  
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -36,5 +35,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://us-central1-social-media-d9c51.cloudfunctions.net/api"
 }

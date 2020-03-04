@@ -27,7 +27,6 @@ class home extends Component {
         )
         return (
             <Grid container spacing={10}>
-                <h1>Comments</h1>
                 <Grid item sm={8} xs={12}>
                     {fetchedComments}
                 </Grid>
