@@ -1,4 +1,4 @@
-import {SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI} from '../types';
+import {SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, LOADING_USER} from '../types';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 
@@ -22,6 +22,7 @@ export const loginUser = (userData, history) => (dispatch) => {
             })
 }
 export const getUserData = () => (dispatch) => {
+    dispatch({ type: LOADING_USER})
     axios.get('/user')
         .then((res) => {
             dispatch({

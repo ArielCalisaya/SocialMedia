@@ -21,14 +21,12 @@ import signup from './pages/signup';
 
 const theme = createMuiTheme(customTheme)
 
-// when i refresh the page before I post the token petition, decodedtoken don't starts, 
-// it not the response i need but i'm okay at the moment
+
 let authenticated;
 const token = localStorage.FBTokenId;
 if (token){
   const decodedToken = jwtDecode(token);
 
-  // it looks the problem starts here
   console.log(decodedToken)
   if(decodedToken.exp * 1000 < Date.now()){
     window.location.href = '/login'
