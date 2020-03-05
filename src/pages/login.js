@@ -12,6 +12,10 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+// Redux 
+import { connect } from 'react-redux';
+import { loginUser } from '../redux/actions/userActions';
+
 
 const styles = (theme) => ({
     ...theme.styled
@@ -31,7 +35,8 @@ class login extends Component {
         const userData = {
             email: this.state.email,
             password: this.state.password
-        }
+        };
+        this.props.loginUser(userData, this.props.history)
     }
     handleChange = (e) => {
         this.setState({

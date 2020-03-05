@@ -1,24 +1,33 @@
 import {SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI} from '../types';
+import axios from 'axios';
+import { bindActionCreators } from 'redux';
 
-export const loginUser = (userData) => (dispatch) => {
+export const loginUser = (userData, history) => (dispatch) => {
     dispatch({ type: LOADING_UI});
     axios
         .post('/signin', userData)
             .then((res) => {
-                console.log(res.data);
-                this.setState({
-                    loading: false
-                });
-                localStorage.setItem('FBTokenId', `Bearer ${res.data.token}`);
-                this.props.history.push('/');
+                const FBTokenId = `Bearer ${res.data.token}`;
+                localStorage.setItem('FBTokenId', FBTokenId);
+                axios.defaults.headers.common['Authorization'] = FBTokenId;
+                dispatch(getUserData());
+                dispatch({ type: CLEAR_ERRORS});
+                history.push('/');
             })
             .catch(err => {
-                this.setState({
-                    errors: err.response.data,
-                    loading: false
+                dispatch({
+                    type: SET_ERRORS,
+                    payload: err.response.data
                 })
             })
 }
 export const getUserData = () => (dispatch) => {
-    
+    axios.get('/user')
+        .then((res) => {
+            dispatch({
+                type: SET_USER,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
 }
