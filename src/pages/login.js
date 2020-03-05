@@ -23,34 +23,15 @@ class login extends Component {
         this.state = {
             email: '',
             password: '',
-            loading: false,
             errors: {}
         }
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({
-            loading: true
-        });
         const userData = {
             email: this.state.email,
             password: this.state.password
         }
-        axios.post('/signin', userData)
-            .then(res => {
-                localStorage.setItem('FBTokenId', `Bearer ${res.data.token}`);
-                console.log(res.data);
-                this.setState({
-                    loading: false
-                });
-                this.props.history.push('/');
-            })
-            .catch(err => {
-                this.setState({
-                    errors: err.response.data,
-                    loading: false
-                })
-            })
     }
     handleChange = (e) => {
         this.setState({
