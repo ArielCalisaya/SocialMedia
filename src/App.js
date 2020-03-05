@@ -20,7 +20,7 @@ import signup from './pages/signup';
 const theme = createMuiTheme(customTheme)
 
 
-// when i refresh the page before I post the token petition, decodedtoken starts, 
+// when i refresh the page before I post the token petition, decodedtoken don't starts, 
 // it not the response i need but i'm okay at the moment
 let authenticated;
 const token = localStorage.FBTokenId;
