@@ -1,6 +1,5 @@
 import {SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, LOADING_USER, SET_UNAUTHENTICATED} from '../types';
 import axios from 'axios';
-// import { bindActionCreators } from 'redux';
 
 export const loginUser = (userData, history) => (dispatch) => {
     dispatch({ type: LOADING_UI});

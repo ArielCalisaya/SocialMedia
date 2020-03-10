@@ -14,13 +14,15 @@ const reduccers = combineReducers({
   UI: UI_Reducer
 });
 
+const composeEnchancers = 
+  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+
+const enchancer = composeEnchancers(applyMiddleware(...middleware));
 const store = createStore(
   reduccers,
   initialState,
-  compose(
-    applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  enchancer
 );
 
 export default store;

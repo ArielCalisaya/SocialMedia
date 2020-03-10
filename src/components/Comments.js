@@ -33,10 +33,10 @@ class Comments extends Component {
                 body,
                 createdAt,
                 userImage,
-                userHandle,
-                commentId,
-                likeCount,
-                commentCount
+                userHandle
+                // commentId,
+                // likeCount,
+                // commentCount
             } 
         } = this.props;
         
