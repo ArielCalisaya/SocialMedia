@@ -18,11 +18,8 @@ const composeEnchancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
-const enchancer = composeEnchancers(applyMiddleware(...middleware));
-const store = createStore(
-  reduccers,
-  initialState,
-  enchancer
-);
+const enchancer = composeEnchancers(applyMiddleware(...middleware))
+
+const store = createStore(reduccers, initialState, enchancer);
 
 export default store;
