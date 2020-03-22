@@ -7,7 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import dayjs from 'dayjs';
 
-const Link = require("react-router-dom").Link;
+import { Link } from 'react-router-dom';
 const relativeTime = require('dayjs/plugin/relativeTime')
 
 const styles = {

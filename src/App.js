@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
-import {MuiThemeProvider} from '@material-ui/core/styles';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import customTheme from './util/theme';
 import jwtDecode from 'jwt-decode';
-import AuthRoute from './util/AuthRoute';
 import './App.css';
 
 // Redux
@@ -13,11 +12,14 @@ import store from './redux/store';
 
 // components
 import Navbar from './components/Navbar';
+import AuthRoute from './util/AuthRoute';
 
 // pages
 import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
+
+// import axios from 'axios'
 
 const theme = createMuiTheme(customTheme)
 
@@ -27,11 +29,11 @@ const token = localStorage.FBTokenId;
 if (token){
   const decodedToken = jwtDecode(token);
 
-  console.log(decodedToken)
   if(decodedToken.exp * 1000 < Date.now()){
     window.location.href = '/login'
     authenticated = false; 
   } else {
+    console.log(decodedToken)
     authenticated = true;
   }
 }

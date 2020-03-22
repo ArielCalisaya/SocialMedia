@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import Icon from '../img/social.png';
+import { Link } from 'react-router-dom';
 
 // MUI
 import Grid from "@material-ui/core/Grid";
@@ -9,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { Link } from 'react-router-dom';
+
 
 // redux
 import {connect} from 'react-redux';
@@ -31,7 +32,7 @@ class signup extends Component {
             errors: {}
         }
     }
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         if(nextProps.UI.errors) {
             this.setState({ errors: nextProps.UI.errors })
         }
@@ -139,4 +140,7 @@ const mapStateToProps = (state) => ({
     UI: state.UI
 })
 
-export default connect(mapStateToProps, { signupUser })(withStyles(styles)(signup));
+export default connect(
+  mapStateToProps, 
+  { signupUser }
+  )(withStyles(styles)(signup));
