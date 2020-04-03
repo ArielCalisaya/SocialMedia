@@ -11,11 +11,14 @@ import Button from "@material-ui/core/Button";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
+import IconButton from "@material-ui/core/IconButton";
+import ToolTip from "@material-ui/core/Tooltip"
 
 // Icons
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
+import EditIcon from "@material-ui/icons/Edit";
 
 const styles = theme => ({
   paper: {
@@ -66,6 +69,20 @@ const styles = theme => ({
 });
 
 class Profile extends Component {
+  
+  handleImageChange = (e) => {
+    const image = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', image, image.name);
+    this.props.uploadImage(formData);
+
+  }
+  
+  handleEditPicture = () => {
+    const fileInput = document.getElementById('uploadImg');
+    fileInput.click();
+  }
+
   render() {
     const {
       classes,
@@ -82,6 +99,16 @@ class Profile extends Component {
           <div className={classes.profile}>
             <div className="image-wrapper">
               <img src={imageUrl} alt="profile" className="profile-image" />
+              <input type="file" 
+              hidden="hidden"
+              id="uploadImg" 
+              onChange={this.handleImageChange}
+              />
+              <ToolTip title="edit_Profile_Picture" placement="top">
+                <IconButton onClick={this.handleEditPicture} className="button">
+                  <EditIcon color="primary" />
+                </IconButton>
+              </ToolTip>
             </div>
             <hr />
             <div className="profile-details">
@@ -153,7 +180,7 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user
 });
 

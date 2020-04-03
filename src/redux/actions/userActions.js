@@ -62,7 +62,9 @@ export const getUserData = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-const setAuthorizationHeader = token => {
+
+// inspeccionar similares
+export const setAuthorizationHeader = token => {
   const FBTokenId = `Bearer ${token}`;
   localStorage.setItem("FBTokenId", FBTokenId);
   axios.defaults.headers.common["Authorization"] = FBTokenId;
