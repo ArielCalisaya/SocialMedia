@@ -26,7 +26,7 @@ export const loginUser = (userData, history) => (dispatch) => {
     });
 };
 
-export const signupUser = (newUserData, history) => dispatch => {
+export const signupUser = (newUserData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
     .post("/signup", newUserData)
@@ -62,9 +62,17 @@ export const getUserData = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const uploadImage = (formData) => (dispatch) => {
+  dispatch({ type: LOADING_USER })
+  axios.post('/user/image', formData)
+  .then(() => {
+    dispatch(getUserData());
+  })
+  .catch( err => console.log(err))
+}
 
 // inspeccionar similares
-export const setAuthorizationHeader = token => {
+const setAuthorizationHeader = token => {
   const FBTokenId = `Bearer ${token}`;
   localStorage.setItem("FBTokenId", FBTokenId);
   axios.defaults.headers.common["Authorization"] = FBTokenId;

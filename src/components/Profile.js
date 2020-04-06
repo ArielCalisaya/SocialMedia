@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+
 // Redux
 import { connect } from "react-redux";
+import { logoutUser, uploadImage } from '../redux/actions/userActions'
 
 // MUI
 import Button from "@material-ui/core/Button";
@@ -184,9 +186,13 @@ const mapStateToProps = (state) => ({
   user: state.user
 });
 
+const mapActionsToProps = { logoutUser, uploadImage }
+
 Profile.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile));
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Profile));
