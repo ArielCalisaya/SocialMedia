@@ -43,11 +43,6 @@ export const signupUser = (newUserData, history) => (dispatch) => {
       });
     });
 };
-export const logoutUser = () => (dispatch) => {
-  localStorage.removeItem("FBTokenId");
-  delete axios.defaults.headers.common["Authorization"];
-  dispatch({ type: SET_UNAUTHENTICATED });
-};
 
 export const getUserData = () => (dispatch) => {
   dispatch({ type: LOADING_USER });
@@ -71,9 +66,25 @@ export const uploadImage = (formData) => (dispatch) => {
   .catch( err => console.log(err))
 }
 
+export const editUserDetails = (userDetails) => (dispatch) => {
+  dispatch({ type: LOADING_USER });
+  axios.post('/user', userDetails)
+  .then(() => {
+    dispatch(getUserData());
+  })
+  .catch(err => console.log(err));
+}
+
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem("FBTokenId");
+  delete axios.defaults.headers.common["Authorization"];
+  dispatch({ type: SET_UNAUTHENTICATED });
+};
+
 // inspeccionar similares
 const setAuthorizationHeader = token => {
   const FBTokenId = `Bearer ${token}`;
   localStorage.setItem("FBTokenId", FBTokenId);
   axios.defaults.headers.common["Authorization"] = FBTokenId;
 };
+
