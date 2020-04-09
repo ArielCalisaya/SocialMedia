@@ -16,12 +16,11 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 
-
 // Icons
 import EditIcon from '@material-ui/icons/Edit'
-import { DialogContent, TextField, DialogActions } from '@material-ui/core';
 
 const styles = (theme) => ({
+    // error with material ui 
     ...theme
 })
 
@@ -32,7 +31,7 @@ class EditDetails extends Component {
         location: '',
         open: false
     };
-    
+
     mapUserDetailsToState = (credentials) => {
         this.setState({
             bio: credentials.bio ? credentials.bio: '',
@@ -99,7 +98,7 @@ class EditDetails extends Component {
                                 multiline
                                 placeholder="Personal website"
                                 className={classes.TextField}
-                                value={this.state.bio}
+                                value={this.state.website}
                                 onChange={this.handleChange}
                                 fullWidth
                             />
@@ -110,7 +109,7 @@ class EditDetails extends Component {
                                 multiline
                                 placeholder="Your location"
                                 className={classes.TextField}
-                                value={this.state.bio}
+                                value={this.state.location}
                                 onChange={this.handleChange}
                                 fullWidth
                             />
