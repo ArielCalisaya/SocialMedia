@@ -5,12 +5,13 @@ import Comments from "../components/Comments";
 import Profile from '../components/Profile';
 
 class home extends Component {
-
+    _isMounted = false;
     state = {
         comments: null,
     };
 
     componentDidMount() {
+        this._isMounted= true;
         axios.get('/comments')
         .then( res => {
             console.log(res.data);
@@ -19,6 +20,9 @@ class home extends Component {
             });
         })
         .catch(err => console.log(err));
+    }
+    componentWillUnmount(){
+        this._isMounted= false;
     }
 
     render() {
