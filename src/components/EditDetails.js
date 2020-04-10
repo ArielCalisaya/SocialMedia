@@ -20,9 +20,12 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit'
 
 const styles = (theme) => ({
-    // error with material ui 
-    ...theme
-})
+    // posible problema dentro de styled 
+    ...theme.styled,
+    button: {
+        float: 'right'
+    }
+});
 
 class EditDetails extends Component {
     state = {
@@ -72,7 +75,9 @@ class EditDetails extends Component {
         return (
             <Fragment >
                 <Tooltip title="Edit Details" placement="top">
-                    <IconButton onClick={this.handleOpen} className={classes.button}></IconButton>
+                    <IconButton 
+                        onClick={this.handleOpen}  
+                        className={classes.button}/>
                     <EditIcon color="primary"/>
                 </Tooltip>
                 <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm" >
@@ -86,7 +91,7 @@ class EditDetails extends Component {
                                 multiline
                                 rows="3"
                                 placeholder="Bio about yourself"
-                                className={classes.TextField}
+                                className={classes.textField}
                                 value={this.state.bio}
                                 onChange={this.handleChange}
                                 fullWidth
@@ -97,7 +102,7 @@ class EditDetails extends Component {
                                 label="Website"
                                 multiline
                                 placeholder="Personal website"
-                                className={classes.TextField}
+                                className={classes.textField}
                                 value={this.state.website}
                                 onChange={this.handleChange}
                                 fullWidth
@@ -108,7 +113,7 @@ class EditDetails extends Component {
                                 label="Location"
                                 multiline
                                 placeholder="Your location"
-                                className={classes.TextField}
+                                className={classes.textField}
                                 value={this.state.location}
                                 onChange={this.handleChange}
                                 fullWidth

@@ -5,9 +5,11 @@ import Comments from "../components/Comments";
 import Profile from '../components/Profile';
 
 class home extends Component {
+
     state = {
-        comments: null
+        comments: null,
     };
+
     componentDidMount() {
         axios.get('/comments')
         .then( res => {

@@ -24,7 +24,7 @@ import CalendarToday from "@material-ui/icons/CalendarToday";
 import EditIcon from "@material-ui/icons/Edit";
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 
-const styles = theme => ({
+const styles = (theme) => ({
   paper: {
     padding: 20
   },
@@ -146,7 +146,8 @@ class Profile extends Component {
                   <hr />
                 </Fragment>
               )}
-              <CalendarToday color="primary" />{" "}
+              <CalendarToday color="primary" />
+                {" "}
                 <span>
                   Joined {dayjs(createdAt).format("MMM YYYY")}
                 </span>                                    
@@ -156,7 +157,7 @@ class Profile extends Component {
                 <KeyboardReturn color="primary"/>
               </IconButton>
             </Tooltip>
-            <EditDetails/>
+            <EditDetails />
           </div>
         </Paper>
       ) : (
