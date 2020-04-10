@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
+import TheButton from '../util/theButton';
 
 // Redux
 import { connect } from 'react-redux';
@@ -13,8 +14,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
+
 
 // Icons
 import EditIcon from '@material-ui/icons/Edit'
@@ -74,12 +74,13 @@ class EditDetails extends Component {
         const { classes } = this.props;
         return (
             <Fragment >
-                <Tooltip title="Edit Details" placement="top">
-                    <IconButton 
-                        onClick={this.handleOpen}  
-                        className={classes.button}/>
+                <TheButton 
+                    tip="Edit Details"
+                    onClick={this.handleOpen}  
+                    btnclassname={classes.button}
+                    >
                     <EditIcon color="primary"/>
-                </Tooltip>
+                </TheButton>
                 <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm" >
                     <DialogTitle>Edit Your Details</DialogTitle>
                     <DialogContent>
@@ -119,7 +120,7 @@ class EditDetails extends Component {
                                 fullWidth
                             />
                         </form>
-                        <DialogContent>
+                        
                             <DialogActions>
                                 <Button onClick={this.handleClose} color="primary">
                                     Cancel
@@ -128,7 +129,7 @@ class EditDetails extends Component {
                                     Save
                                 </Button>
                             </DialogActions>
-                        </DialogContent>
+                        
                     </DialogContent>
                 </Dialog>
             </Fragment>

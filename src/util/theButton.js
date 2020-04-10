@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 
-export default ({children, onClick, tip, btnClassName, tipClassName}) => (
-    <Tooltip tittle={tip} className={tipClassName} placement="top">
-        <IconButton onClick={onClick} className={btnClassName}>
+export default ({children, onClick, tip, btnclassname, tipClassName}) => (
+    <Tooltip title={tip} className={tipClassName} placement="top">
+        <IconButton onClick={onClick} className={btnclassname}>
             {children}
         </IconButton>
     </Tooltip>
