@@ -8,5 +8,9 @@ export const LOADING_USER = 'LOADING_USER';
 export const SET_ERRORS = 'SET_ERRORS';
 export const LOADING_UI = 'LOADING_UI';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const  LOADING_DATA = 'LOADING_DATA';
 
-// DATA Types
+// DATA Reducer Types
+export const  SET_COMMENTS = 'SET_COMMENTS';
+export const  LIKE_COMMENT = 'LIKE_COMMENT';
+export const  UNLIKE_COMMENT = 'UNLIKE_COMMENT';

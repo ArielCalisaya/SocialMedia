@@ -15,8 +15,6 @@ import Button from "@material-ui/core/Button";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip"
 
 // Icons
 import LocationOn from "@material-ui/icons/LocationOn";
@@ -155,11 +153,14 @@ class Profile extends Component {
                   Joined {dayjs(createdAt).format("MMM YYYY")}
                 </span>                                    
             </div>
-            <Tooltip title="logout" placement="top" >
-              <IconButton onClick={this.handleLogout}>
+            <TheButton 
+              tip="Logout"
+              title="logout" 
+              placement="top"
+              onClick={this.handleLogout}
+              >
                 <KeyboardReturn color="primary"/>
-              </IconButton>
-            </Tooltip>
+            </TheButton>
             <EditDetails />
           </div>
         </Paper>
