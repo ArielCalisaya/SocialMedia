@@ -1,34 +1,29 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Grid from "@material-ui/core/Grid";
 import Comments from "../components/Comments";
 import Profile from '../components/Profile';
+import PropTypes from 'prop-types';
+
+// Redux
+import { connect } from 'react-redux';
+import { getComments } from '../redux/actions/dataActions';
 
 class home extends Component {
     _isMounted = false;
-    state = {
-        comments: null,
-    };
+
 
     componentDidMount() {
         this._isMounted= true;
-        axios.get('/comments')
-        .then( res => {
-            console.log(res.data);
-            this.setState({
-                comments: res.data
-            });
-        })
-        .catch(err => console.log(err));
+        this.props.getComments()
     }
     componentWillUnmount(){
         this._isMounted= false;
     }
 
     render() {
-        let fetchedComments = this.state.comments ? (
-            this.state.comments
-                .map((comment) => <Comments  key={comment.commentId} comment={comment}/>)
+        const { comments, loading } = this.props.data;
+        let fetchedComments = !loading ? (
+            comments.map((comment) => <Comments  key={comment.commentId} comment={comment}/>)
         ) : (
             <p> loading ...</p>
         )
@@ -45,4 +40,13 @@ class home extends Component {
     }
 }
 
-export default home
+home.propTypes = {
+    getComments: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    data: state.data
+})
+
+export default connect(mapStateToProps, {getComments})(home)
