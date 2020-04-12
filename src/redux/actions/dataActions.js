@@ -23,6 +23,25 @@ export const getComments = () => dispatch => {
 
 
 // Like
-
+export const likeComment = (commentId) => dispatch => {
+    axios.get(`/comment/${commentId}/like`)
+        .then(res => {
+            dispatch({
+                type: LIKE_COMMENT,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
 
 // Unlike
+export const unlikeComment = (commentId) => dispatch => {
+    axios.get(`/comment/${commentId}/unLike`)
+        .then(res => {
+            dispatch({
+                type: UNLIKE_COMMENT,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
