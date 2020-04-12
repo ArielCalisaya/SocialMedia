@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-import TheButton from '../util/theButton';
+import TheButton from '../util/TheButton';
 
 // Redux
 import { connect } from 'react-redux';

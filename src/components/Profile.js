@@ -4,6 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EditDetails from './EditDetails';
+import TheButton from '../util/TheButton';
 
 // Redux
 import { connect } from "react-redux";
@@ -110,11 +111,13 @@ class Profile extends Component {
               id="uploadImg" 
               onChange={this.handleImageChange}
               />
-              <Tooltip title="edit_Profile_Picture" placement="top">
-                <IconButton onClick={this.handleEditPicture} className="button">
-                  <EditIcon color="primary" />
-                </IconButton>
-              </Tooltip>
+              <TheButton 
+              tip="Change Picture"
+              title="edit_Profile_Picture" 
+              onClick={this.handleEditPicture} 
+              >
+                <EditIcon color="primary" />
+              </TheButton>
             </div>
             <hr />
             <div className="profile-details">
