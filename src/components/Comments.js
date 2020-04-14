@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
+import PropTypes from 'prop-types';
 // MUI
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import dayjs from 'dayjs';
+
+// Redux
+import { connect } from 'react-redux';
+import { likeComments, unlikeComments } from '../redux/actions/dataActions';
 
 import { Link } from 'react-router-dom';
 const relativeTime = require('dayjs/plugin/relativeTime')
@@ -65,5 +70,21 @@ class Comments extends Component {
         );
     }
 }
+Comments.propTypes = {
+    likeComment: PropTypes.func.isRequired,
+    unlikeComment: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    comment: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired
+}
 
-export default withStyles(styles)(Comments);
+const mapStateToProps = state => ({
+    user: state.user
+})
+
+const mapActionsToProps = state => ({
+    likeComment,
+    unlikeComment
+})
+
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Comments));
