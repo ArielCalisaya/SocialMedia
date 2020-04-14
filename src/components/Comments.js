@@ -11,11 +11,12 @@ import dayjs from 'dayjs';
 
 // Icons 
 import ChatIcon from '@material-ui/icons/Chat';
+import FavoriteIcon from '@material-ui/icons/Favorite'
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 
 // Redux
 import { connect } from 'react-redux';
-import { likeComments, unlikeComments } from '../redux/actions/dataActions';
+import { likeComment, unlikeComment } from '../redux/actions/dataActions';
 
 import { Link } from 'react-router-dom';
 const relativeTime = require('dayjs/plugin/relativeTime')
