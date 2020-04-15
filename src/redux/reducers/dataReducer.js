@@ -1,5 +1,6 @@
 import {
     SET_COMMENTS, 
+    SET_COMMENT,
     LIKE_COMMENT, 
     UNLIKE_COMMENT, 
     LOADING_DATA, 
@@ -17,7 +18,7 @@ export default function(state = initialState, action){
         case LOADING_DATA:
             return {
                 ...state,
-                loading:true
+                loading: true
             }
         case SET_COMMENTS:
             return {
@@ -25,6 +26,12 @@ export default function(state = initialState, action){
                 comments: action.payload,
                 loading: false
             }
+        case SET_COMMENT: 
+            return {
+                ...state,
+                comment: action.payload
+            }
+
         case LIKE_COMMENT:
         case UNLIKE_COMMENT:
             let index = state.comments.findIndex(
