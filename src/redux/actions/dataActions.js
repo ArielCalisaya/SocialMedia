@@ -1,4 +1,10 @@
-import { SET_COMMENTS, LOADING_DATA, LIKE_COMMENT, UNLIKE_COMMENT } from '../types';
+import { 
+        SET_COMMENTS, 
+        LOADING_DATA, 
+        LIKE_COMMENT, 
+        UNLIKE_COMMENT,
+        DELETE_COMMENT 
+    } from '../types';
 import axios from 'axios';
 
 // get Comments func
@@ -44,4 +50,15 @@ export const unlikeComment = (commentId) => (dispatch) => {
             })
         })
         .catch(err => console.log(err));
+}
+
+export const deleteComment = (commentId) => (dispatch) => {
+    axios.delete(`/comment/${commentId}`)
+        .then(() => {
+            dispatch({
+                type: DELETE_COMMENT,
+                payload: commentId
+            })
+            .catch(err => console.log(err))
+        })
 }

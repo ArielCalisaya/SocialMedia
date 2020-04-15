@@ -12,5 +12,7 @@ export const  LOADING_DATA = 'LOADING_DATA';
 
 // DATA Reducer Types
 export const  SET_COMMENTS = 'SET_COMMENTS';
+export const  SET_COMMENT = 'SET_COMMENT';
 export const  LIKE_COMMENT = 'LIKE_COMMENT';
 export const  UNLIKE_COMMENT = 'UNLIKE_COMMENT';
+export const  DELETE_COMMENT = 'DELETE_COMMENT';

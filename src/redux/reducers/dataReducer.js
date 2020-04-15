@@ -1,4 +1,10 @@
-import {SET_COMMENTS, LIKE_COMMENT, UNLIKE_COMMENT, LOADING_DATA} from '../types';
+import {
+    SET_COMMENTS, 
+    LIKE_COMMENT, 
+    UNLIKE_COMMENT, 
+    LOADING_DATA, 
+    DELETE_COMMENT
+} from '../types';
 
 const initialState = {
     comments: [],
@@ -28,6 +34,12 @@ export default function(state = initialState, action){
             if( state.comment.commentId === action.payload.commentId){
                 state.comment = action.payload;
             }
+            return {
+                ...state
+            }
+        case DELETE_COMMENT:
+            index = state.comments.findIndex(comment => comment.commentId === action.payload);
+            state.comments.splice(index, 1);
             return {
                 ...state
             }
