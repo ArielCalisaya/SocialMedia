@@ -14,6 +14,11 @@ import { connect } from 'react-redux';
 import { deleteComment } from '../redux/actions/dataActions';
 
 const  styles = {
+    deleteButton: {
+        position: 'absolute',
+        left: '90%',
+        top: '10%'
+    }
 
 }
 class DeleteComment extends Component {
@@ -28,7 +33,7 @@ class DeleteComment extends Component {
         this.setState({ open: false });
     }
     deleteComment = () => {
-        this.props.deleteComment(this.props.commenId)
+        this.props.deleteComment(this.props.commentId)
         this.setState({ open: false });
     }
 
@@ -66,7 +71,7 @@ class DeleteComment extends Component {
     }
 }
 
-DeleteComment.protoTypes = {
+DeleteComment.propTypes = {
     deleteComment: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     commentId: PropTypes.string.isRequired

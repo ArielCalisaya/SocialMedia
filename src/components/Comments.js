@@ -17,7 +17,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 
 // Redux
 import { connect } from 'react-redux';
-import { likeComment, unlikeComment, deleteComment } from '../redux/actions/dataActions';
+import { likeComment, unlikeComment } from '../redux/actions/dataActions';
 
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
@@ -25,6 +25,7 @@ const relativeTime = require('dayjs/plugin/relativeTime')
 
 const styles = {
     card: {
+        position: 'relative',
         display: "flex",
         marginBottom: 20
     },
@@ -75,7 +76,6 @@ class Comments extends Component {
         const likeButton = !authenticated ? (
             <Link to="/login">
                 <TheButton tip="Like">
-                
                     <FavoriteBorder color="primary"/>
                 </TheButton>
             </Link>
@@ -118,6 +118,7 @@ class Comments extends Component {
                         >
                             {userHandle}
                         </Typography>
+                        
                         {deleteButton}
 
                         <Typography variant="body2" color="textSecondary">

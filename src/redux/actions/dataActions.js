@@ -53,12 +53,13 @@ export const unlikeComment = (commentId) => (dispatch) => {
 }
 
 export const deleteComment = (commentId) => (dispatch) => {
-    axios.delete(`/comment/${commentId}`)
+    axios
+        .delete(`/comment/${commentId}`)
         .then(() => {
             dispatch({
                 type: DELETE_COMMENT,
                 payload: commentId
             })
-            .catch(err => console.log(err))
         })
+        .catch(err => console.log(err))
 }

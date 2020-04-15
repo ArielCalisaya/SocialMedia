@@ -31,14 +31,16 @@ export default function(state = initialState, action){
                 (comment) => comment.commentId === action.payload.commentId
             );
             state.comments[index] = action.payload;
-            if( state.comment.commentId === action.payload.commentId){
+            if (state.comment.commentId === action.payload.commentId) {
                 state.comment = action.payload;
-            }
+              };
             return {
                 ...state
             }
         case DELETE_COMMENT:
-            index = state.comments.findIndex(comment => comment.commentId === action.payload);
+            index = state.comments.findIndex(
+                (comment) => comment.commentId === action.payload
+            );
             state.comments.splice(index, 1);
             return {
                 ...state
