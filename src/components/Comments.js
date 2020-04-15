@@ -7,7 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import dayjs from 'dayjs';
+
 
 // Icons 
 import ChatIcon from '@material-ui/icons/Chat';
@@ -19,6 +19,7 @@ import { connect } from 'react-redux';
 import { likeComment, unlikeComment } from '../redux/actions/dataActions';
 
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 const relativeTime = require('dayjs/plugin/relativeTime')
 
 const styles = {
@@ -67,7 +68,7 @@ class Comments extends Component {
                 likeCount,
                 commentCount
             },
-            user: { authenticated }
+            user: { authenticated, credentials: { handle } }
         } = this.props;
 
         const likeButton = !authenticated ? (
@@ -95,6 +96,11 @@ class Comments extends Component {
                 </TheButton>
             )
         )
+
+        const deleteButton = authenticated && userHandle === handle ? (
+            <DeleteComment commentId={commentId}/>
+        ) : null
+
         return (
                 <Card className= {classes.card}>
                     <CardMedia
