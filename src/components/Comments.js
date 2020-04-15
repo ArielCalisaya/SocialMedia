@@ -67,17 +67,16 @@ class Comments extends Component {
                 likeCount,
                 commentCount
             },
-            user: {
-                authenticated
-            }
+            user: { authenticated }
         } = this.props;
-        const likeButton = !authenticated ? (
-            <TheButton tip="Like">
-                <Link to="/login">
-                    <FavoriteBorder color="primary"/>
-                </Link>
 
-            </TheButton>
+        const likeButton = !authenticated ? (
+            <Link to="/login">
+                <TheButton tip="Like">
+                
+                    <FavoriteBorder color="primary"/>
+                </TheButton>
+            </Link>
         ) : (
             this.likedComment() ? (
                 <TheButton 
@@ -86,6 +85,7 @@ class Comments extends Component {
                 >
                     <FavoriteIcon color="primary" />
                 </TheButton>
+            
             ) : (
                 <TheButton 
                 tip="Like"
@@ -95,7 +95,6 @@ class Comments extends Component {
                 </TheButton>
             )
         )
-        
         return (
                 <Card className= {classes.card}>
                     <CardMedia
@@ -143,9 +142,9 @@ const mapStateToProps = state => ({
     user: state.user
 })
 
-const mapActionsToProps = state => ({
+const mapActionsToProps = {
     likeComment,
     unlikeComment
-})
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Comments));

@@ -25,6 +25,9 @@ export default function(state = initialState, action){
                 (comment) => comment.commentId === action.payload.commentId
             );
             state.comments[index] = action.payload;
+            if( state.comment.commentId === action.payload.commentId){
+                state.comment = action.payload;
+            }
             return {
                 ...state
             }

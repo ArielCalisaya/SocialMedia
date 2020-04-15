@@ -32,7 +32,7 @@ export default function(state = initialState, action){
                 likes: [
                     ...state.likes,
                     {
-                        userHande: state.credentials.handle,
+                        userHandle: state.credentials.handle,
                         commentId: action.payload.commentId
                     }
                 ]
@@ -40,12 +40,11 @@ export default function(state = initialState, action){
         case UNLIKE_COMMENT:
             return {
                 ...state,
-                likes: [
+                likes:
                     state.likes.filter(
-                        (like) => like.commentId === action.payload.commentId
+                        (like) => like.commentId !== action.payload.commentId
                     )
-                ]
-            }
+            };
         default:
             return state;
     }
