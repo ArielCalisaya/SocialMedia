@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from 'prop-types';
 import TheButton from '../util/TheButton';
+import DeleteComment from './DeleteComment';
 // MUI
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -16,7 +17,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 
 // Redux
 import { connect } from 'react-redux';
-import { likeComment, unlikeComment } from '../redux/actions/dataActions';
+import { likeComment, unlikeComment, deleteComment } from '../redux/actions/dataActions';
 
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
@@ -117,6 +118,8 @@ class Comments extends Component {
                         >
                             {userHandle}
                         </Typography>
+                        {deleteButton}
+
                         <Typography variant="body2" color="textSecondary">
                             {dayjs(createdAt).fromNow()}
                         </Typography>
