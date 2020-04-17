@@ -20,7 +20,7 @@ export const getComments = () => dispatch => {
             payload: res.data      
         })
     })
-    .catch(err => {
+    .catch(() => {
         dispatch({
             type: SET_COMMENTS,
             payload: []
@@ -29,9 +29,7 @@ export const getComments = () => dispatch => {
 }
 
 export const getComment = (commentId) => (dispatch) => {
-    dispatch({ 
-        type: LOADING_UI
-    })
+    dispatch({ type: LOADING_UI })
     axios.get(`/comment/${commentId}`)
     .then(res => {
         dispatch({
@@ -72,7 +70,10 @@ export const deleteComment = (commentId) => (dispatch) => {
     axios
         .delete(`/comment/${commentId}`)
         .then(() => {
-            dispatch({ type: DELETE_COMMENT, payload: commentId })
+            dispatch({ 
+                type: DELETE_COMMENT, 
+                payload: commentId 
+            })
         })
         .catch((err) => console.log(err))
 }
