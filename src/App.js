@@ -22,11 +22,7 @@ import { logoutUser, getUserData } from './redux/actions/userActions';
 import { SET_AUTHENTICATED } from './redux/types';
 import axios from 'axios';
 
-// import axios from 'axios'
-
 const theme = createMuiTheme(customTheme)
-
-
 
 const token = localStorage.FBTokenId;
 if (token){

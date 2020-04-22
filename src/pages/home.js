@@ -4,7 +4,8 @@ import Comments from "../components/Comments";
 import Profile from '../components/Profile';
 import PropTypes from 'prop-types';
 
-// Redux
+
+/*------------------ Redux -------------------*/
 import { connect } from 'react-redux';
 import { getComments } from '../redux/actions/dataActions';
 

@@ -10,7 +10,9 @@ import {
     } from '../types';
 import axios from 'axios';
 
-// get Comments func
+/*------------------------------------------------
+                    Get Comments
+------------------------------------------------*/
 export const getComments = () => dispatch => {
     dispatch({ type: LOADING_DATA });
     axios.get('/comments')
@@ -27,7 +29,9 @@ export const getComments = () => dispatch => {
         })
     })
 }
-
+/*------------------------------------------------
+                  Get One Comment
+------------------------------------------------*/
 export const getComment = (commentId) => (dispatch) => {
     dispatch({ type: LOADING_UI })
     axios.get(`/comment/${commentId}`)
@@ -42,7 +46,9 @@ export const getComment = (commentId) => (dispatch) => {
 }
 
 
-// Like
+/*------------------------------------------------
+                        Like
+------------------------------------------------*/
 export const likeComment = (commentId) => (dispatch) => {
     axios.get(`/comment/${commentId}/like`)
         .then(res => {
@@ -54,7 +60,9 @@ export const likeComment = (commentId) => (dispatch) => {
         .catch(err => console.log(err));
 }
 
-// Unlike
+/*------------------------------------------------
+                       Unlike
+------------------------------------------------*/
 export const unlikeComment = (commentId) => (dispatch) => {
     axios.get(`/comment/${commentId}/unLike`)
         .then(res => {
@@ -66,6 +74,17 @@ export const unlikeComment = (commentId) => (dispatch) => {
         .catch(err => console.log(err));
 }
 
+
+
+
+
+/*---------------------------------- ⚠ Problems - Delete Comment ⚠ -----------------------------------
+
+    Problema con redux al eliminar el post no ocurre nada por parte de frontend pero si funciona por
+    parte de backend, por lo que al actualizar se borra por completo pero no no esta siendo ocurriendo
+    interaccion por parte de frontends
+                
+-----------------------------------------------------------------------------------------------------*/
 export const deleteComment = (commentId) => (dispatch) => {
     axios
         .delete(`/comment/${commentId}`)
@@ -77,5 +96,3 @@ export const deleteComment = (commentId) => (dispatch) => {
         })
         .catch((err) => console.log(err))
 }
-// Error: funciona el por parte del servidor eliminando el comentario pero no desaparece al ineractuar con el comentario hasta 
-        // actualizar
