@@ -8,7 +8,7 @@ const initialState = {};
 
 const middleware = [thunk];
 
-const reduccers = combineReducers({
+const reducers = combineReducers({
   user: userReducer,
   data: dataReducer,
   UI: UI_Reducer
@@ -20,6 +20,6 @@ const composeEnchancers =
 
 const enchancer = composeEnchancers(applyMiddleware(...middleware))
 
-const store = createStore(reduccers, initialState, enchancer);
+const store = createStore(reducers, initialState, enchancer);
 
 export default store;
