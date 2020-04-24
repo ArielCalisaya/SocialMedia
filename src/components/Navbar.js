@@ -2,14 +2,13 @@ import React, { Component, Fragment } from "react";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import TheButton from '../util/TheButton';
-
+import PostComment from './PostComment';
 // MUI 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 // Icons
-import AddIcon from '@material-ui/icons/Add';
 import HomeIcon from '@material-ui/icons/Home';
 import Notifications from '@material-ui/icons/Notifications';
 
@@ -26,9 +25,7 @@ class Navbar extends Component {
         <Toolbar className="nav-container">
           {authenticated ? (
             <Fragment>
-              <TheButton tip="New Post">
-                <AddIcon color="primary"/>
-              </TheButton>
+              <PostComment />
               <Link to="/">
                 <TheButton tip="Home">
                   <HomeIcon color="primary"/>

@@ -109,3 +109,9 @@ const setAuthorizationHeader = token => {
   axios.defaults.headers.common["Authorization"] = FBTokenId;
 };
 
+/*------------------------------------------------
+                    Post Comment
+------------------------------------------------*/
+const postComment = () => (dispatch) => {
+  
+}

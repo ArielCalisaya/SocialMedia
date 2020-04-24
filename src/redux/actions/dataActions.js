@@ -4,11 +4,15 @@ import {
         STOP_LOADING_UI,
         LIKE_COMMENT, 
         UNLIKE_COMMENT,
+        POST_COMMENT,
         DELETE_COMMENT, 
         LOADING_UI,
-        SET_COMMENT
+        SET_COMMENT,
+        SET_ERRORS,
+        CLEAR_ERRORS
     } from '../types';
 import axios from 'axios';
+import PostComment from '../../components/PostComment';
 
 /*------------------------------------------------
                     Get Comments
@@ -29,6 +33,28 @@ export const getComments = () => dispatch => {
         })
     })
 }
+
+/*------------------------------------------------
+                  Get One Comment
+------------------------------------------------*/
+export const postComment = (newComment) => (dispatch) => {
+    dispatch({ type: LOADING_UI });
+    axios.post('/comment', newComment)
+        .then(res => {
+            dispatch({
+                type: POST_COMMENT,
+                payload: res.data
+            });
+            dispatch({ stype: CLEAR_ERRORS })
+        })
+        .catch(err => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data
+            })
+        })
+}
+
 /*------------------------------------------------
                   Get One Comment
 ------------------------------------------------*/
