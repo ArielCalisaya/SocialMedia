@@ -12,7 +12,6 @@ import {
         CLEAR_ERRORS
     } from '../types';
 import axios from 'axios';
-import PostComment from '../../components/PostComment';
 
 /*------------------------------------------------
                     Get Comments

@@ -108,10 +108,3 @@ const setAuthorizationHeader = token => {
   localStorage.setItem("FBTokenId", FBTokenId);
   axios.defaults.headers.common["Authorization"] = FBTokenId;
 };
-
-/*------------------------------------------------
-                    Post Comment
-------------------------------------------------*/
-const postComment = () => (dispatch) => {
-  
-}

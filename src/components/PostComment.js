@@ -6,7 +6,6 @@ import TheButton from "../util/TheButton";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -15,10 +14,21 @@ import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
 // Redux
 import { connect } from "react-redux";
-import { postComment } from "../redux/actions/userActions";
+import { postComment } from "../redux/actions/dataActions";
 
 const styles = (theme) => ({
   ...theme.styled,
+    submitButton: {
+        position: 'relative'
+    },
+    progressSpinner: {
+        position: 'absolute'
+    },
+    closeButton: {
+        position: 'absolute',
+        left: '90%',
+        top: '10%'
+    }
 });
 
 class PostComment extends Component {
@@ -36,7 +46,7 @@ class PostComment extends Component {
   };
 
   render() {
-    const { errors } = this.sate;
+    const { errors } = this.state;
     const {
       classes,
       UI: { loading },
@@ -81,8 +91,12 @@ class PostComment extends Component {
                 variant="contained"
                 color="primary"
                 className={classes.submitButton}
-                disabled={loading}
-              ></Button>
+                disabled={loading}>
+                    Submit
+                    {loading && (
+                        <CircularProgress size={30} className={classes.progessSpinner} />
+                    )}
+                </Button>
             </form>
           </DialogContent>
         </Dialog>
@@ -102,6 +116,6 @@ const mapStateToProps = (state) => ({
   UI: state.UI,
 });
 
-export default connect((mapStateToProps, { postComment }))(
+export default connect(mapStateToProps, { postComment })(
   withStyles(styles)(PostComment)
 );
