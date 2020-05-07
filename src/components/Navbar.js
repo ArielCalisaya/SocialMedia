@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import TheButton from '../util/TheButton';
+import TheButton from '../util/theButton';
 import PostComment from './PostComment';
 // MUI 
 import AppBar from "@material-ui/core/AppBar";

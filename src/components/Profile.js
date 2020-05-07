@@ -4,7 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EditDetails from './EditDetails';
-import TheButton from '../util/TheButton';
+import TheButton from '../util/theButton';
 
 // Redux
 import { connect } from "react-redux";
