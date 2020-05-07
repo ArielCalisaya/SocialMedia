@@ -37,6 +37,13 @@ class PostComment extends Component {
     body: "",
     errors: {},
   };
+  UNSAFE_componentWillReceiveProps(nextProps){
+      if(nextProps.UI.errors){
+          this.setState({
+              errors: nextProps.UI.errors
+          })
+      }
+  }
   handleOpen = () => {
     this.setState({ open: true });
   };
@@ -44,6 +51,14 @@ class PostComment extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+  hancleChange = (e) => {
+      this.setState({ [e.target]: e.target.value})
+  }
+  handleSubmit = (e) => {
+      e.preventDefault();
+      this.props.postComment({ body: this.state.body})
+  }
 
   render() {
     const { errors } = this.state;
@@ -72,7 +87,10 @@ class PostComment extends Component {
           </TheButton>
           <DialogTitle> Post a new Comment</DialogTitle>
           <DialogContent>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit = (e) => {
+                e.preventDefault();
+                this.props.postComment({ body: this.state.body})
+            }}>
               <TextField
                 name="body"
                 type="text"
@@ -94,7 +112,7 @@ class PostComment extends Component {
                 disabled={loading}>
                     Submit
                     {loading && (
-                        <CircularProgress size={30} className={classes.progessSpinner} />
+                        <CircularProgress size={30} className={classes.progressSpinner} />
                     )}
                 </Button>
             </form>
