@@ -34,11 +34,11 @@ export const getComments = () => dispatch => {
 }
 
 /*------------------------------------------------
-                  Get One Comment
+                  Post Comment
 ------------------------------------------------*/
 export const postComment = (newComment) => (dispatch) => {
     dispatch({ type: LOADING_UI });
-    axios.post('/comment', newComment)
+    axios.post('/newComment', newComment)
         .then(res => {
             dispatch({
                 type: POST_COMMENT,

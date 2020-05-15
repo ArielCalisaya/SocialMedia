@@ -35,7 +35,7 @@ class PostComment extends Component {
   state = {
     open: false,
     body: "",
-    errors: {},
+    errors: {}
   };
   UNSAFE_componentWillReceiveProps(nextProps){
       if(nextProps.UI.errors){
@@ -64,7 +64,7 @@ class PostComment extends Component {
     const { errors } = this.state;
     const {
       classes,
-      UI: { loading },
+      UI: { loading }
     } = this.props;
 
     return (
@@ -131,7 +131,7 @@ PostComment.propTypes = {
   UI: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
-  UI: state.UI,
+  UI: state.UI
 });
 
 export default connect(mapStateToProps, { postComment })(

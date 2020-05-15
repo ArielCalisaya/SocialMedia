@@ -19,20 +19,19 @@ export default function (state = initialState, action) {
     case LOADING_DATA:
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     case SET_COMMENTS:
       return {
         ...state,
         comments: action.payload,
-        loading: false,
+        loading: false
       };
     case SET_COMMENT:
       return {
         ...state,
-        comment: action.payload,
+        comment: action.payload
       };
-
     case LIKE_COMMENT:
     case UNLIKE_COMMENT:
       let index = state.comments.findIndex(
@@ -43,26 +42,23 @@ export default function (state = initialState, action) {
         state.comment = action.payload;
       }
       return {
-        ...state,
+        ...state
       };
-    case POST_COMMENT:
+      case DELETE_COMMENT:
+        index = state.comments.findIndex(
+          (comment) => comment.commentId === action.payload
+        );
+
+        state.comments.splice(index, 1);
+        return {
+          ...state
+        };
+      case POST_COMMENT:
       return {
           ...state,
-          comments: [
-              action.payload,
-              ...state.comments
-          ]
-      }
-    case DELETE_COMMENT:
-      index = state.comments.findIndex(
-        (comment) => comment.commentId === action.payload
-      );
-
-      state.comments.splice(index, 1);
-      return {
-        ...state,
+          comments: [ action.payload, ...state.comments ]
       };
-    default:
+      default:
       return state;
   }
 }
