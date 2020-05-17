@@ -1,0 +1,9 @@
+
+
+	- Arreglado Post Comment: problema ocurrido por url de interacción incorrecto
+	
+	dataReducer: en post comment no esta creando comment aun funciona el warning body-text
+		     Revisar entre dataActions y dataReducer hay una brecha entre interacciones
+		     por lo cual deja la app la funcionalidad post y delete inutil
+		    
+	

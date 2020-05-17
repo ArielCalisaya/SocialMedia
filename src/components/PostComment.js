@@ -42,6 +42,10 @@ class PostComment extends Component {
           this.setState({
               errors: nextProps.UI.errors
           })
+      };
+      if (!nextProps.UI.errors && !nextProps.UI.loading){
+        this.setState({ body: ''});
+        this.handleClose();
       }
   }
   handleOpen = () => {
@@ -49,11 +53,11 @@ class PostComment extends Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, errors: {} });
   };
 
-  hancleChange = (e) => {
-      this.setState({ [e.target]: e.target.value})
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
   }
   handleSubmit = (e) => {
       e.preventDefault();
@@ -87,15 +91,12 @@ class PostComment extends Component {
           </TheButton>
           <DialogTitle> Post a new Comment</DialogTitle>
           <DialogContent>
-            <form onSubmit={this.handleSubmit = (e) => {
-                e.preventDefault();
-                this.props.postComment({ body: this.state.body})
-            }}>
+            <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
                 type="text"
-                label="Comment"
-                mutiline
+                label="Comment here"
+                multiline
                 rows="3"
                 placeholder="What are u thinking about?"
                 error={errors.body ? true : false}

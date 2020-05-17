@@ -44,7 +44,7 @@ export const postComment = (newComment) => (dispatch) => {
                 type: POST_COMMENT,
                 payload: res.data
             });
-            dispatch({ stype: CLEAR_ERRORS })
+            dispatch({ type: CLEAR_ERRORS })
         })
         .catch(err => {
             dispatch({
