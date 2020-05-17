@@ -106,7 +106,7 @@ export const unlikeComment = (commentId) => (dispatch) => {
 /*---------------------------------- ⚠ Problems - Delete Comment ⚠ -----------------------------------
 
     Problema con redux al eliminar el post no ocurre nada por parte de frontend pero si funciona por
-    parte de backend, por lo que al actualizar se borra por completo pero no no esta siendo ocurriendo
+    parte de backend, por lo que al actualizar se borra por completo pero sno esta ocurriendo
     interaccion por parte de frontends
                 
 -----------------------------------------------------------------------------------------------------*/
