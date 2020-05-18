@@ -9,4 +9,4 @@ export default ({children, onClick, tip, btnclassname, tipClassName}) => (
             {children}
         </IconButton>
     </Tooltip>
-)
+);

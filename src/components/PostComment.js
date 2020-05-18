@@ -120,7 +120,6 @@ class PostComment extends Component {
           </DialogContent>
         </Dialog>
 
-        <TheButton onClick={this.handleClose} />
       </Fragment>
     );
   }

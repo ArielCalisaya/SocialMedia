@@ -81,7 +81,7 @@ class Comments extends Component {
         ) : (
             this.likedComment() ? (
                 <TheButton 
-                tip="Quit Like"
+                tip="Remove Like"
                 onClick={this.unlikeComment}
                 >
                     <FavoriteIcon color="primary" />
