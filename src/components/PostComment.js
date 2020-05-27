@@ -14,7 +14,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
 // Redux
 import { connect } from "react-redux";
-import { postComment } from "../redux/actions/dataActions";
+import { postComment, clearErrors } from "../redux/actions/dataActions";
 
 const styles = (theme) => ({
   ...theme.styled,
@@ -44,8 +44,7 @@ class PostComment extends Component {
           })
       };
       if (!nextProps.UI.errors && !nextProps.UI.loading){
-        this.setState({ body: ''});
-        this.handleClose();
+        this.setState({ body: '', open: false, errors: {}});
       }
   }
   handleOpen = () => {
@@ -53,6 +52,7 @@ class PostComment extends Component {
   };
 
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
 
@@ -127,6 +127,7 @@ class PostComment extends Component {
 
 
 PostComment.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   postComment: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
 };
@@ -134,6 +135,6 @@ const mapStateToProps = (state) => ({
   UI: state.UI
 });
 
-export default connect(mapStateToProps, { postComment })(
+export default connect(mapStateToProps, { postComment, clearErrors })(
   withStyles(styles)(PostComment)
 );

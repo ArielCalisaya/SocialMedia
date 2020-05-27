@@ -34,6 +34,9 @@ const styles = {
     content: {
         padding: 25,
         objectFit: "cover"
+    },
+    wrapLargeText: {
+        wordBreak: "break-all"
     }
 };
 
@@ -123,7 +126,10 @@ class Comments extends Component {
                         <Typography variant="body2" color="textSecondary">
                             {dayjs(createdAt).fromNow()}
                         </Typography>
-                        <Typography variant="body1">{body}</Typography>
+                        
+                        <Typography 
+                        className ={classes.wrapLargeText}
+                        variant="body1">{body}</Typography>
                         {likeButton}
                         <span>
                             {likeCount} Likes

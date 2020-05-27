@@ -16,22 +16,26 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+
     case LOADING_DATA:
       return {
         ...state,
         loading: true
       };
+
     case SET_COMMENTS:
       return {
         ...state,
         comments: action.payload,
         loading: false
       };
+
     case SET_COMMENT:
       return {
         ...state,
         comment: action.payload
       };
+
     case LIKE_COMMENT:
     case UNLIKE_COMMENT:
       let index = state.comments.findIndex(
@@ -44,20 +48,22 @@ export default function (state = initialState, action) {
       return {
         ...state
       };
+      
       case DELETE_COMMENT:
         index = state.comments.findIndex(
           (comment) => comment.commentId === action.payload
         );
-
         state.comments.splice(index, 1);
         return {
           ...state
         };
+
       case POST_COMMENT:
       return {
           ...state,
           comments: [ action.payload, ...state.comments ]
       };
+      
       default:
       return state;
   }
